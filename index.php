@@ -84,7 +84,7 @@ if (!is_null($events['events'])) {
                       $textMessageBuilder = new LocationMessageBuilder($title, $address, $latitude, $longitude);
                       $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                           break;
-                      case 'ผู้สร้าง':
+                      case 'คำถาม':
                       try {
                           // Check to see user already answer
                           $host = 'ec2-174-129-223-193.compute-1.amazonaws.com';
