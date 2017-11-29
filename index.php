@@ -22,3 +22,4 @@ $httpClient=newCurlHTTPClient($channel_token); $bot=newLINEBot($httpClient, arra
 } }
 $response=$bot->replyMessage($replyToken, $textMessageBuilder); break;
 echo "OK";
+?>
