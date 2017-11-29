@@ -37,13 +37,13 @@ if (!is_null($events['events'])) {
                     $file = fopen($fileName, 'w');
                     fwrite($file, $response->getRawBody());
                     // Reply message
-                    $respMessage = 'Hellooo, your image ID is '. $messageID;
+                    $respMessage = 'image ID is '. $messageID;
 
                     break;//ปิดimage
                 case 'location':
                     $address = $event['message']['address'];
                     // Reply message
-                    $respMessage = 'Hellooo, your address is '. $address;
+                    $respMessage = 'ที่อยู่ของคุณ '. $address;
 
                     break;//ปิดlocation
                 case 'text':
@@ -70,6 +70,16 @@ if (!is_null($events['events'])) {
                       $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
                       $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
                       $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                          break;
+                      case 'ขอที่อยู่':
+                      $title = 'I am here';
+    $address = 'Fitness 7 Ratchada';
+    $latitude = '13.7743425';
+    $longitude = '100.5680782';
+    $httpClient = new CurlHTTPClient($channel_token);
+    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+    $textMessageBuilder = new LocationMessageBuilder($title, $address, $latitude, $longitude);
+    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                           break;
                       default:
                           $respMessage = 'ฉันอาจยังไม่ได้เรียนรู้คำสั่งนี้ เรียนรู้เพิ่มเติมพิม 1';
