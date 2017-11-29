@@ -18,22 +18,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message') {
             switch($event['message']['type']) {
 
-                case 'text':
-                $replyToken = $event['replyToken'];
-                $ask = $event['message']['text'];
-                switch(strtolower($ask)) {
-                    case 'm':
-                        $respMessage = 'What sup man. Go away!';
-                        break;
-                    case 'f':
-                        $respMessage = 'Love you lady.';
-                        break;
-                    default:
-                        $respMessage = 'What is your sex? M or F';
-                        break;
-                }break;
-
-                case 'image':
+              case 'image':
                     $messageID = $event['message']['id'];
                     // Create image on server.
                     $fileID = $event['message']['id'];
@@ -49,6 +34,8 @@ if (!is_null($events['events'])) {
                     // Reply message
                     $respMessage = 'Please send image only';
                     break;
+
+
             }
             $httpClient = new CurlHTTPClient($channel_token);
             $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
