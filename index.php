@@ -33,19 +33,17 @@ if (!is_null($events['events'])) {
                         break;
                 }break;
 
-                
-                case 'image':
-                $messageID = $event['message']['id'];
-                    // Create image on server.
-                    $fileID = $event['message']['id'];
-                    $response = $bot->getMessageContent($fileID);
-                    $fileName = 'linebot.jpg';
-                    $file = fopen($fileName, 'w');
-                    fwrite($file, $response->getRawBody());
-                    // Reply message
-                    $respMessage = 'Hello, your image ID is '. $messageID;
 
-                    break;
+                case 'image':
+                $replyToken = $event['replyToken'];
+        // Image
+        $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+        $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+        $httpClient = new CurlHTTPClient($channel_token);
+        $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+        $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
+        $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+        break;
 
             }
             $httpClient = new CurlHTTPClient($channel_token);
