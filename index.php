@@ -28,8 +28,8 @@ if (!is_null($events['events'])) {
                 $respMessage = 'lineBot ยังไม่ได้เรียนรู้ค้าบ พิม 1 เพื่อเรียนรู้';
                 break;
         }
-        $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
-        $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+        $originalContentUrl = 'http://static.weloveshopping.com/shop/client/000049/krichhouse/AIM270011.jpg';
+        $previewImageUrl = 'http://static.weloveshopping.com/shop/client/000049/krichhouse/AIM270011.jpg';
 
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
