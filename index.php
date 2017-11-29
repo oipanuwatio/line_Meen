@@ -1,3 +1,2 @@
-?php
-echo 'line bot id 581413031';
- 
+<?php
+echo "Hello LINE BOT";
