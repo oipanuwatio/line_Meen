@@ -20,19 +20,34 @@ if (!is_null($events['events'])) {
 
                 case 'text':
                 $replyToken = $event['replyToken'];
-    $ask = $event['message']['text'];
-    switch(strtolower($ask)) {
-        case 'm':
-            $respMessage = 'What sup man. Go away!';
-            break;
-        case 'f':
-            $respMessage = 'Love you lady.';
-            break;
-        default:
-            $respMessage = 'What is your sex? M or F';
-            break;
-    }
+                $ask = $event['message']['text'];
+                switch(strtolower($ask)) {
+                    case 'm':
+                        $respMessage = 'What sup man. Go away!';
+                        break;
+                    case 'f':
+                        $respMessage = 'Love you lady.';
+                        break;
+                    default:
+                        $respMessage = 'What is your sex? M or F';
+                        break;
+                }break;
 
+                case 'image':
+                    $messageID = $event['message']['id'];
+                    // Create image on server.
+                    $fileID = $event['message']['id'];
+                    $response = $bot->getMessageContent($fileID);
+                    $fileName = 'linebot.jpg';
+                    $file = fopen($fileName, 'w');
+                    fwrite($file, $response->getRawBody());
+                    // Reply message
+                    $respMessage = 'Hello, your image ID is '. $messageID;
+
+                    break;
+                default:
+                    // Reply message
+                    $respMessage = 'Please send image only';
                     break;
             }
             $httpClient = new CurlHTTPClient($channel_token);
