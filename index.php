@@ -87,10 +87,10 @@ if (!is_null($events['events'])) {
                       case 'คำถาม':
                       try {
                           // Check to see user already answer
-                          $host = 'ec2-174-129-223-193.compute-1.amazonaws.com';
-                          $dbname = 'd74bjtc28mea5m';
-                          $user = 'eozuwfnzmgflmu';
-                          $pass = '2340614a293db8e8a8c02753cd5932cdee45ab90bfcc19d0d306754984cbece1';
+                          $host = 'ec2-23-23-237-68.compute-1.amazonaws.com';
+                          $dbname = 'daul7v92bjhejv';
+                          $user = 'ngcyaacvbmhdnc';
+                          $pass = 'a1f26150d45b19c96a587497d6bbaf634785f7e6ece0e90c0e0007ea3e5977f5';
                           $connection = new PDO("pgsql:host=$host;dbname=$dbname", $user, $pass);
 
                           $sql = sprintf("SELECT * FROM poll WHERE user_id='%s' ", $event['source']['userId']);
