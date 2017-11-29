@@ -95,9 +95,15 @@ if (!is_null($events['events'])) {
                       $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                           break;
                       case 'คำถาม':
-                          $respMessage = 'นาย ภาณุวัชร อุปันโน 581413031';
+                          $respMessage = "
+                              1+3 = ? \n\r
+                              กด A 1 \n\r
+                              กด B 2 \n\r
+                              กด C 3 \n\r
+                              กด D 4 \n\r
+                          ";
                           break;
-                          case '1':
+                      case 'A':
                               // Insert
                               $params = array(
                                   'userID' => $event['source']['userId'],
@@ -114,7 +120,7 @@ if (!is_null($events['events'])) {
                               if($result){
                                   $amount = $result->rowCount();
                               }
-                              $respMessage = 'จำนวนคนตอบว่าเพื่อน = '.$amount;
+                              $respMessage = 'เป็นคำตอบที่ผิด จำนวนคนตอบข้อ Aมี = '.$amount;
                               break;
                       default:
                           $respMessage = 'ฉันอาจยังไม่ได้เรียนรู้คำสั่งนี้ เรียนรู้เพิ่มเติมพิม z';
