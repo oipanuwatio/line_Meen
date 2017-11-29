@@ -31,21 +31,20 @@ if (!is_null($events['events'])) {
                                 case 'f':
                                     $respMessage = 'Love you lady.';
                                     break;
+                                case 'xx':
+                                $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+                                $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+
+                                    $respMessage = 'นี้รูป';
+                                    break;
                                 default:
-                                    $respMessage = 'What is your sex? m or f';
+                                    $respMessage = 'What is your sex? mx or fx';
                                     break;
                             }
 
                         break;
 
-                    case 'image':
-                    // Get replyToken
-    $replyToken = $event['replyToken'];
-    // Image
-    $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
-    $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
 
-                        break;
                 }
 
             $httpClient = new CurlHTTPClient($channel_token);
