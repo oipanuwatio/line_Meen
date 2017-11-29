@@ -49,22 +49,22 @@ if (!is_null($events['events'])) {
                 case 'text':
                               $ask = $event['message']['text'];
                   switch(strtolower($ask)) {
-                      case 'm':
-                          $respMessage = 'What sup man. Go away!';
+                      case '1':
+                          $respMessage = 'lineBot สามารถขอตอบถามง่ายๆทั่วไป เช่น ถามชื่อ,ขอดูรูป,ขอพิกัดและคำถามต่างๆ.......';
                           break;
-                      case 'f':
-                          $respMessage = 'Love you lady.';
+                      case 'สวัสดี':
+                          $respMessage = 'สวัสดีค้าบยินดีต้อนรับLineBotนะ.';
                           break;
-                      case 'ss':
-                      $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
-    $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+                      case 'ขอรูป':
+                      $originalContentUrl = 'http://www.fotorelax.com/forum/index.php?action=dlattach;topic=27706.0;attach=384891';
+    $previewImageUrl = 'http://www.fotorelax.com/forum/index.php?action=dlattach;topic=27706.0;attach=384891';
     $httpClient = new CurlHTTPClient($channel_token);
     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
     $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
     $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                           break;
                       default:
-                          $respMessage = 'What is your sex? M or F';
+                          $respMessage = 'ฉันอาจยังไม่ได้เรียนรู้คำสั่งนี้ เรียนรู้เพิ่มเติมพิม 1';
                           break;
                   }
 
