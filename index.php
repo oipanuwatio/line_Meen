@@ -11,33 +11,12 @@ $channel_secret = 'b7ec1714f2db948a7ff3cfbe7e5164c2';
 // Get message from Line API
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
-if (!is_null($events['events'])) {
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-
-        // Line API send a lot of event type, we interested in message only.
-		if ($event['type'] == 'message') {
-      // Postback Event
-if (($event instanceof \LINE\LINEBot\Event\PostbackEvent)) {
-$logger->info('Postback message has come');
-continue;
-}
-
-// Location Event
-if  ($event instanceof LINE\LINEBot\Event\MessageEvent\LocationMessage) {
-$logger->info("location -> ".$event->getLatitude().",".$event->getLongitude());
-continue;
-}
-
-// Message Event = TextMessage
-if (($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
-// get message text
-$messageText=strtolower(trim($event->getText()));
-
-}
-
-} 
-		}
-	}
+$actions = array (
+  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("yes", "ans=y"),
+  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("no", "ans=N")
+);
+$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("confim message", $actions);
+$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("confim message", $button);
+$response = $bot->replyMessage($event->getReplyToken(), $outputText);
 }
 echo "OK";
