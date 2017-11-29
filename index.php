@@ -55,16 +55,24 @@ if (!is_null($events['events'])) {
                       case 'สวัสดี':
                           $respMessage = 'สวัสดีค้าบยินดีต้อนรับLineBotนะ.';
                           break;
+                      case 'ชื่ออะไร':
+                          $respMessage = 'ฉันชื่อมีน';
+                          break;
+                      case 'ผู้สร้าง':
+                          $respMessage = 'นาย ภาณุวัชร อุปันโน 581413031';
+                          break;
                       case 'ขอรูป':
-                      $originalContentUrl = 'http://www.fotorelax.com/forum/index.php?action=dlattach;topic=27706.0;attach=384891;image';
-    $previewImageUrl = 'http://www.fotorelax.com/forum/index.php?action=dlattach;topic=27706.0;attach=384891;image';
-    $httpClient = new CurlHTTPClient($channel_token);
-    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-    $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
-    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                      $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+                      $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+                    //originalContentUrl:URLที่เกบ็รูปภาพความยาวไม่เกนิ 1000ตวัอกัษร,ต้องเป็นhttps,ไฟล์JPEG, กวา้งยาวสูงสุด1024x1024พิกเซลและขนาดไม่เกนิ 1MB
+                    //previewImageUrl:URLภาพที่ใช้สาหรับทาpreviewความยาวไม่เกนิ 1000ตัวอกั ษร,ต้องเป็นhttps,ไฟล์ JPEG,กวา้งยาวสูงสุด240x240พิกเซลและขนาดต้องไม่เกนิ 1MB
+                      $httpClient = new CurlHTTPClient($channel_token);
+                      $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                      $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
+                      $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                           break;
                       default:
-                          $respMessage = 'ฉันอาจยังไม่ได้เรียนรู้คำสั่งนี้ เรียนรู้เพิ่มเติมกับฉัน พิม 1';
+                          $respMessage = 'ฉันอาจยังไม่ได้เรียนรู้คำสั่งนี้ เรียนรู้เพิ่มเติมพิม 1';
                           break;
                   }
 
