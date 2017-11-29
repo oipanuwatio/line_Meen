@@ -22,15 +22,18 @@ if (!is_null($events['events'])) {
                 $respMessage = 'ตอนนี้ lineBot สามารถถามชื่อ,idผู้ใช้งาน,คำถามทั่วๆไป....';
                 break;
             case 'f':
-                $respMessage = "สวัสดี ID คุณคือ ".$events;
+                $respMessage = "สวัสดี ID คุณคือ ".$events['events'][0]['source']['userId'];
                 break;
             default:
                 $respMessage = 'lineBot ยังไม่ได้เรียนรู้ค้าบ พิม 1 เพื่อเรียนรู้';
                 break;
         }
+        $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+        $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-        $textMessageBuilder = new TextMessageBuilder($respMessage);
+        $textMessageBuilder = new TextMessageBuilder($respMessage,$originalContentUrl, $previewImageUrl);
         $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
 	}
