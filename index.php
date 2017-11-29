@@ -58,6 +58,9 @@ if (!is_null($events['events'])) {
                       case 'ชื่ออะไร':
                           $respMessage = 'ฉันชื่อมีน';
                           break;
+                      case 'ขอเพลง':
+                          $respMessage = 'https://www.youtube.com/watch?v=aatr_2MstrI&list=RDGMEMYH9CUrFO7CfLJpaD7UR85wVMaatr_2MstrI';
+                          break;
                       case 'ผู้สร้าง':
                           $respMessage = 'นาย ภาณุวัชร อุปันโน 581413031';
                           break;
@@ -73,13 +76,13 @@ if (!is_null($events['events'])) {
                           break;
                       case 'ขอที่อยู่':
                       $title = 'I am here';
-    $address = 'Fitness 7 Ratchada';
-    $latitude = '13.7743425';
-    $longitude = '100.5680782';
-    $httpClient = new CurlHTTPClient($channel_token);
-    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-    $textMessageBuilder = new LocationMessageBuilder($title, $address, $latitude, $longitude);
-    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                      $address = 'Chiang Rai Rajabhat University';
+                      $latitude = '19.98047';
+                      $longitude = '99.85144';
+                      $httpClient = new CurlHTTPClient($channel_token);
+                      $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+                      $textMessageBuilder = new LocationMessageBuilder($title, $address, $latitude, $longitude);
+                      $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                           break;
                       default:
                           $respMessage = 'ฉันอาจยังไม่ได้เรียนรู้คำสั่งนี้ เรียนรู้เพิ่มเติมพิม 1';
