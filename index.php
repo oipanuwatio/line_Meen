@@ -115,8 +115,63 @@ if (!is_null($events['events'])) {
                               if($result){
                                   $amount = $result->rowCount();
                               }
-                              $respMessage = 'เป็นคำตอบที่ผิด จำนวนคนตอบข้อ Aมี = '.$amount;
+                              $respMessage = 'เป็นคำตอบที่ผิด จำนวนคนตอบข้อ 1มี = '.$amount;
                               break;
+                      case '2':
+                            // Insert
+                            $params = array(
+                                'userID' => $event['source']['userId'],
+                                'answer' => '2',
+                            );
+
+                            $statement = $connection->prepare('INSERT INTO poll ( user_id, answer ) VALUES ( :userID, :answer )');
+                            $statement->execute($params);
+                            // Query
+                            $sql = sprintf("SELECT * FROM poll WHERE answer='2' AND  user_id='%s' ", $event['source']['userId']);
+                            $result = $connection->query($sql);
+                            $amount = 1;
+                            if($result){
+                                $amount = $result->rowCount();
+                            }
+                            $respMessage = 'เป็นคำตอบที่ผิด จำนวนคนตอบข้อ 2มี = '.$amount;
+                            break;
+                      case '3':
+                            // Insert
+                            $params = array(
+                                'userID' => $event['source']['userId'],
+                                'answer' => '3',
+                            );
+
+                            $statement = $connection->prepare('INSERT INTO poll ( user_id, answer ) VALUES ( :userID, :answer )');
+                            $statement->execute($params);
+                            // Query
+                            $sql = sprintf("SELECT * FROM poll WHERE answer='3' AND  user_id='%s' ", $event['source']['userId']);
+                            $result = $connection->query($sql);
+                            $amount = 1;
+                            if($result){
+                                $amount = $result->rowCount();
+                            }
+                            $respMessage = 'เป็นคำตอบที่ผิด จำนวนคนตอบข้อ 3มี = '.$amount;
+
+                            break;
+                      case '4':
+                            // Insert
+                            $params = array(
+                                'userID' => $event['source']['userId'],
+                                'answer' => '4',
+                            );
+
+                            $statement = $connection->prepare('INSERT INTO poll ( user_id, answer ) VALUES ( :userID, :answer )');
+                            $statement->execute($params);
+                            // Query
+                            $sql = sprintf("SELECT * FROM poll WHERE answer='4' AND  user_id='%s' ", $event['source']['userId']);
+                            $result = $connection->query($sql);
+                            $amount = 1;
+                            if($result){
+                                $amount = $result->rowCount();
+                            }
+                            $respMessage = 'ถูกต้องนะค้าบ จำนวนคนที่ตอบถูกมี = '.$amount;
+                            break;
                       default:
                           $respMessage = 'ฉันอาจยังไม่ได้เรียนรู้คำสั่งนี้ เรียนรู้เพิ่มเติมพิม z';
                           break;
