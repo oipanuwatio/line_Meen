@@ -10,13 +10,33 @@ $channel_token = '/avi4EmY8kTPWXO+awWk+ztd3I2HD9BAS/WHgY/GyKJnpmJ/M4lHlBxWFNr8V5
 $channel_secret = 'b7ec1714f2db948a7ff3cfbe7e5164c2';
 // Get message from Line API
 $content = file_get_contents('php://input');
-$events = json_decode($content, true);
-$actions = array (
-  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("yes", "ans=y"),
-  New \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder("no", "ans=N")
-);
-$button = new \LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder("confim message", $actions);
-$outputText = new \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder("confim message", $button);
-$response = $bot->replyMessage($event->getReplyToken(), $outputText);
+$arrJson = json_decode($content, true);
+if (!is_null($arrJson['events'])) {
+	// Loop through each event
+	foreach ($arrJson['events'] as $arrJson) {
+
+        // Line API send a lot of event type, we interested in message only.
+        if($arrJson['events'][0]['message']['text'] == "สวัสดี"){
+      $arrPostData = array();
+      $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+      $arrPostData['messages'][0]['type'] = "text";
+      $arrPostData['messages'][0]['text'] = "สวัสดี ID คุณคือ ".$arrJson['events'][0]['source']['userId'];
+    }else if($arrJson['events'][0]['message']['text'] == "ชื่ออะไร"){
+      $arrPostData = array();
+      $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+      $arrPostData['messages'][0]['type'] = "text";
+      $arrPostData['messages'][0]['text'] = "ฉันยังไม่มีชื่อนะ";
+    }else if($arrJson['events'][0]['message']['text'] == "ทำอะไรได้บ้าง"){
+      $arrPostData = array();
+      $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+      $arrPostData['messages'][0]['type'] = "text";
+      $arrPostData['messages'][0]['text'] = "ฉันทำอะไรไม่ได้เลย คุณต้องสอนฉันอีกเยอะ";
+    }else{
+      $arrPostData = array();
+      $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+      $arrPostData['messages'][0]['type'] = "text";
+      $arrPostData['messages'][0]['text'] = "ฉันไม่เข้าใจคำสั่ง";
+    }
+	}
 }
 echo "OK";
