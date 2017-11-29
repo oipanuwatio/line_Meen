@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
         $longitude = '100.5680782';
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
-        if ($event['type'] == 'message') {
+        if ($event['type'] == 'text') {
         $textMessageBuilder = new LocationMessageBuilder($title, $address, $latitude, $longitude);}
         $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
