@@ -33,18 +33,28 @@ if (!is_null($events['events'])) {
                     $file = fopen($fileName, 'w');
                     fwrite($file, $response->getRawBody());
                     // Reply message
-                    $respMessage = 'Helloo, your image ID is '. $messageID;
+                    $respMessage = 'Hellooo, your image ID is '. $messageID;
 
                     break;
                 case 'location':
                     $address = $event['message']['address'];
                     // Reply message
-                    $respMessage = 'Helloo, your address is '. $address;
+                    $respMessage = 'Hellooo, your address is '. $address;
 
                     break;
                 case 'text':
-                    // Reply message
-                    $respMessage = 'Hello, your message is '. $event['message']['text'];
+                              $ask = $event['message']['text'];
+                  switch(strtolower($ask)) {
+                      case 'm':
+                          $respMessage = 'What sup man. Go away!';
+                          break;
+                      case 'f':
+                          $respMessage = 'Love you lady.';
+                          break;
+                      default:
+                          $respMessage = 'What is your sex? M or F';
+                          break;
+                  }
 
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
