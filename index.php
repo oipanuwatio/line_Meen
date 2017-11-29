@@ -18,7 +18,7 @@ if (!is_null($events['events'])) {
         $replyToken = $event['replyToken'];
         // Video
         $originalContentUrl = 'https://www.select2web.com.com/the-fuji.mp4';
-        $previewImageUrl = 'https://www.select2web.com.com/the-fuji.jpg';
+        $previewImageUrl = 'http://static.weloveshopping.com/shop/client/000049/krichhouse/AIM270011.jpg';
         $httpClient = new CurlHTTPClient($channel_token);
         $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
         $textMessageBuilder = new VideoMessageBuilder($originalContentUrl, $previewImageUrl);
