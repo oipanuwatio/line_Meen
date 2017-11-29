@@ -20,23 +20,27 @@ if (!is_null($events['events'])) {
             switch($event['message']['type']) {
 
                 case 'text':
-                    // Get replyToken
-                    $replyToken = $event['replyToken'];
-
-                    // Reply message
-                    $respMessage = 'Hello, your message is '. $event['message']['text'];
-
-
+           $replyToken = $event['replyToken'];
+           $ask = $event['message']['text'];
+           switch(strtolower($ask)) {
+               case 'm':
+                   $respMessage = 'What sup man. Go away!';
+                   break;
+               case 'f':
+                   $respMessage = 'Love you lady.';
+                   break;
+               default:
+                   $respMessage = 'What is your sex? M or F';
+                   break;
+           }
+           $httpClient = new CurlHTTPClient($channel_token);
+           $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+           $textMessageBuilder = new TextMessageBuilder($respMessage);
+           $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
                     break;
-
-                
             }
-            $httpClient = new CurlHTTPClient($channel_token);
-            $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 
-            $textMessageBuilder = new TextMessageBuilder($respMessage);
-            $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
 		}
 	}
