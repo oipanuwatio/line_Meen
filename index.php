@@ -50,14 +50,14 @@ if (!is_null($events['events'])) {
                               $ask = $event['message']['text'];
                   switch(strtolower($ask)) {
                       case '1':
-                          $respMessage = 'lineBot สามารถขอตอบถามง่ายๆทั่วไป เช่น ถามชื่อ,ขอดูรูป,ขอพิกัดและคำถามต่างๆ.......';
+                          $respMessage = 'lineBot สามารถขอตอบคำถามง่ายๆทั่วไป เช่น ถามชื่อ,ขอดูรูป,ขอพิกัดและคำถามต่างๆ.......';
                           break;
                       case 'สวัสดี':
                           $respMessage = 'สวัสดีค้าบยินดีต้อนรับLineBotนะ.';
                           break;
                       case 'ขอรูป':
-                      $originalContentUrl = 'http://www.fotorelax.com/forum/index.php?action=dlattach;topic=27706.0;attach=384891';
-    $previewImageUrl = 'http://www.fotorelax.com/forum/index.php?action=dlattach;topic=27706.0;attach=384891';
+                      $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+    $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
     $httpClient = new CurlHTTPClient($channel_token);
     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
     $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
