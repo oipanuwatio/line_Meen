@@ -95,15 +95,10 @@ if (!is_null($events['events'])) {
                       $response = $bot->replyMessage($replyToken, $textMessageBuilder);
                           break;
                       case 'คำถาม':
-                          $respMessage = "
-                              1+3 = ? \n\r
-                              กด A 1 \n\r
-                              กด B 2 \n\r
-                              กด C 3 \n\r
-                              กด D 4 \n\r
+                          $respMessage = "1+3 = ? \n\r กด 1ตอบ 1. \n\r กด 2ตอบ 2. \n\r กด 3ตอบ 3. \n\r กด 4ตอบ 4 \n\r
                           ";
                           break;
-                      case 'A':
+                      case '1':
                               // Insert
                               $params = array(
                                   'userID' => $event['source']['userId'],
