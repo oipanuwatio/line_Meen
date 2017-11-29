@@ -4,6 +4,10 @@ require_once('./vendor/autoload.php');
 use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use \LINE\LINEBot;
 use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\LocationMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
+
 // Token
 $channel_token = '/avi4EmY8kTPWXO+awWk+ztd3I2HD9BAS/WHgY/GyKJnpmJ/M4lHlBxWFNr8V5x+IUV+4oEDPJOj02U9pGP19daIqHwkmWLyOOnElf0CrNzGgGTQOIkxjf00q2zQU2wH8kstcGc9yr17a6NqkTcofwdB04t89/1O/w1cDnyilFU=';
 $channel_secret = 'b7ec1714f2db948a7ff3cfbe7e5164c2';
@@ -35,13 +39,13 @@ if (!is_null($events['events'])) {
                     // Reply message
                     $respMessage = 'Hellooo, your image ID is '. $messageID;
 
-                    break;
+                    break;//ปิดimage
                 case 'location':
                     $address = $event['message']['address'];
                     // Reply message
                     $respMessage = 'Hellooo, your address is '. $address;
 
-                    break;
+                    break;//ปิดlocation
                 case 'text':
                               $ask = $event['message']['text'];
                   switch(strtolower($ask)) {
@@ -51,6 +55,14 @@ if (!is_null($events['events'])) {
                       case 'f':
                           $respMessage = 'Love you lady.';
                           break;
+                      case 'ss':
+                      $originalContentUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+    $previewImageUrl = 'https://cdn.shopify.com/s/files/1/1217/6360/products/Shinkansen_Tokaido_ShinFuji_001_1e44e709-ea47-41ac-91e4-89b2b5eb193a_grande.jpg?v=1489641827';
+    $httpClient = new CurlHTTPClient($channel_token);
+    $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+    $textMessageBuilder = new ImageMessageBuilder($originalContentUrl, $previewImageUrl);
+    $response = $bot->replyMessage($replyToken, $textMessageBuilder);
+                          break;
                       default:
                           $respMessage = 'What is your sex? M or F';
                           break;
@@ -59,10 +71,10 @@ if (!is_null($events['events'])) {
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 
-                    break;
+                    break;//ปิดtext
                 default:
                     // Reply message
-                    $respMessage = 'Please send image only';
+                    $respMessage = 'lineBotยังไม่ได้เรียนรู้เกียวกับรูปแบบข้อความนี้';
                     break;
             }
             $textMessageBuilder = new TextMessageBuilder($respMessage);
@@ -70,4 +82,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK";
+echo "lineBot By Panuwat Upunno.";
