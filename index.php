@@ -30,18 +30,7 @@ if (!is_null($events['events'])) {
 
                     break;
 
-                    case 'image':
-                        $messageID = $event['message']['id'];
-                        // Create image on server.
-                        $fileID = $event['message']['id'];
-                        $response = $bot->getMessageContent($fileID);
-                        $fileName = 'linebot.jpg';
-                        $file = fopen($fileName, 'w');
-                        fwrite($file, $response->getRawBody());
-                        // Reply message
-                        $respMessage = 'Hello, your image ID is '. $messageID;
-
-                        break;
+                
             }
             $httpClient = new CurlHTTPClient($channel_token);
             $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
