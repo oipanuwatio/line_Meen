@@ -22,7 +22,7 @@ if (!is_null($events['events'])) {
                 $respMessage = 'ตอนนี้ lineBot สามารถถามชื่อ,idผู้ใช้งาน,คำถามทั่วๆไป....';
                 break;
             case 'f':
-                $respMessage = "สวัสดี ID คุณคือ ".$arrJson['events'][0]['source']['userId'];
+                $respMessage = "สวัสดี ID คุณคือ ".$events['events'][0]['source']['userId'];
                 break;
             default:
                 $respMessage = 'lineBot ยังไม่ได้เรียนรู้ค้าบ พิม 1 เพื่อเรียนรู้';
