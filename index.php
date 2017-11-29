@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
                     $replyToken = $event['replyToken'];
 
                     // Reply message
-                    $respMessage = 'Hello, your message is '. $event['message']['text'];
+                    $respMessage = 'Hellooooooo, your message is '. $event['message']['text'];
 
                     $httpClient = new CurlHTTPClient($channel_token);
                     $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
                     $textMessageBuilder = new TextMessageBuilder($respMessage);
                     $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
-                    break;
+
 
                     case 'image':
                     // Get replyToken
