@@ -71,6 +71,9 @@ if (!is_null($events['events'])) {
                       case 'ขอเพลง':
                           $respMessage = 'https://www.youtube.com/watch?v=aatr_2MstrI&list=RDGMEMYH9CUrFO7CfLJpaD7UR85wVMaatr_2MstrI';
                           break;
+				case 'ขอดูเกรด':
+                          $respMessage = 'คุณได้F';
+                          break;  
                       case 'ผู้สร้าง':
                           $respMessage = 'นาย ภาณุวัชร อุปันโน 581413031';
                           break;
