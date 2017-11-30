@@ -63,6 +63,11 @@ if (!is_null($events['events'])) {
                           $respMessage = 'lineBot สามารถขอตอบคำถามง่ายๆทั่วไป เช่น ถามชื่อ,ขอดูรูป,ขอพิกัดและคำถามต่างๆ.......';
                           break;
                       case 'สวัสดี':
+											$packageId = 1;
+        							$stickerId = 410;
+
+        							$textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId);
+
                           $respMessage = 'สวัสดีค้าบยินดีต้อนรับLineBotนะ.';
                           break;
                       case 'ชื่ออะไร':
