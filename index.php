@@ -64,11 +64,13 @@ if (!is_null($events['events'])) {
                           break;
                       case 'สวัสดี':
 											$packageId = 1;
-        							$stickerId = 410;
+        $stickerId = 410;
+        $httpClient = new CurlHTTPClient($channel_token);
+				$respMessage = 'สวัสดีค้าบยินดีต้อนรับLineBotนะ..';
+        $bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+        $textMessageBuilder = new StickerMessageBuilder($respMessage,$packageId, $stickerId);
+        $response = $bot->replyMessage($replyToken, $textMessageBuilder);
 
-        							$textMessageBuilder = new StickerMessageBuilder($packageId, $stickerId);
-
-                          $respMessage = 'สวัสดีค้าบยินดีต้อนรับLineBotนะ.';
                           break;
                       case 'ชื่ออะไร':
                           $respMessage = 'ฉันชื่อมีน';
