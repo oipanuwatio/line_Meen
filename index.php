@@ -74,7 +74,7 @@ if (!is_null($events['events'])) {
                       case 'ผู้สร้าง':
                           $respMessage = 'นาย ภาณุวัชร อุปันโน 581413031';
                           break;
-											case 'นอนยัง':
+											case 'คิดถึง':
 											$packageId = 1;
 													$stickerId = 410;
 													$httpClient = new CurlHTTPClient($channel_token);
